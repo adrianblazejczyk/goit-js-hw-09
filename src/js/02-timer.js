@@ -4,6 +4,14 @@ import 'flatpickr/dist/flatpickr.min.css';
 import Notiflix from 'notiflix';
 
 /*---------------------------------------------------------------------------------------------------------------- */
+const inputData = document.querySelector('#datetime-picker');
+// const timerWraper = document.querySelectorAll('.value');
+const fromDays = document.querySelector('[data-days]');
+const fromHours = document.querySelector('[data-hours]');
+const fromMinutes = document.querySelector('[data-minutes]');
+const fromSeconds = document.querySelector('[data-seconds]');
+const btnStartWraper = document.querySelector('[data-start]');
+/*---------------------------------------------------------------------------------------------------------------- */
 let time = null;
 let timerId = null;
 
@@ -35,6 +43,7 @@ function updateTimer() {
     Notiflix.Notify.success('Koniec Odliczania');
   }
 }
+
 function convertMs(ms) {
   const second = 1000;
   const minute = second * 60;
@@ -53,12 +62,12 @@ function addLeadingZero(value) {
 }
 
 function upDateTimerView(time) {
-  timerWraper[0].textContent = addLeadingZero(time.days);
-  timerWraper[1].textContent = addLeadingZero(time.hours);
-  timerWraper[2].textContent = addLeadingZero(time.minutes);
-  timerWraper[3].textContent = addLeadingZero(time.seconds);
-  //timerWraper.dataset.second = addLeadingZero(time.seconds);
+  fromDays.textContent = addLeadingZero(time.days);
+  fromHours.textContent = addLeadingZero(time.hours);
+  fromMinutes.textContent = addLeadingZero(time.minutes);
+  fromSeconds.textContent = addLeadingZero(time.seconds);
 }
+
 function startTimer() {
   timerId = setInterval(updateTimer, 1000);
   btnStartWraper.setAttribute('disabled', '');
@@ -66,9 +75,6 @@ function startTimer() {
   Notiflix.Notify.info('Start odliczania');
 }
 /*---------------------------------------------------------------------------------------------------------------- */
-const inputData = document.querySelector('#datetime-picker');
-const timerWraper = document.querySelectorAll('.value');
-const btnStartWraper = document.querySelector('[data-start]');
-const btnStartLisner = btnStartWraper.addEventListener('click', startTimer);
-const calendar = flatpickr('#datetime-picker', options);
+btnStartWraper.addEventListener('click', startTimer);
 btnStartWraper.setAttribute('disabled', '');
+flatpickr('#datetime-picker', options);

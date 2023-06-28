@@ -1,6 +1,9 @@
 /*---------------------------------------------------------------------------------------------------------------- */
 import Notiflix from 'notiflix';
 /*---------------------------------------------------------------------------------------------------------------- */
+const bntSubmit = document.querySelector('[type=submit]');
+const formWraper = document.querySelector('.form');
+/*---------------------------------------------------------------------------------------------------------------- */
 function createPromise(position, delay) {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
@@ -17,7 +20,6 @@ function createPromise(position, delay) {
     }, delay);
   });
 }
-
 function submitForm(eve) {
   eve.preventDefault();
   const delay = Number(formWraper.delay.value);
@@ -38,7 +40,7 @@ function submitForm(eve) {
       });
   }
 }
+
 /*---------------------------------------------------------------------------------------------------------------- */
-const bntSubmit = document.querySelector('[type=submit]');
-const bntSubmitListener = bntSubmit.addEventListener('click', submitForm);
-const formWraper = document.querySelector('.form');
+bntSubmit.addEventListener('click', submitForm);
+

@@ -26,5 +26,5 @@ function startChangeColor() {
 }
 /*-------------------------------------------------------------------------------------------------------------------------------- */
 btnStop.setAttribute(`disabled`, '');
-const btnStartLisner = btnStart.addEventListener('click', startChangeColor);
-const btnStopLisner = btnStop.addEventListener('click', stopChangeColor);
+btnStart.addEventListener('click', startChangeColor);
+btnStop.addEventListener('click', stopChangeColor);
